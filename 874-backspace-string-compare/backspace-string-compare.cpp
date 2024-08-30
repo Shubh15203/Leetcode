@@ -13,8 +13,6 @@ public:
             tt.pop_back();
             else if(t[i]!='#') tt.push_back(t[i]);
         }
-        // sort(ss.begin(),ss.end());
-        // sort(tt.begin(),tt.end());
         return ss==tt;
     }
 };
