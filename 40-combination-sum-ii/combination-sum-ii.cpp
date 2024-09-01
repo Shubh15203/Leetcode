@@ -20,7 +20,6 @@ void findCombination(int ind, int target, vector < int > & arr, vector < vector 
           sort(candidates.begin(), candidates.end());
 
       vector < int > ds;
-        sort(candidates.begin(), candidates.end());
 
       findCombination(0, target, candidates, ans, ds);
         return ans;
