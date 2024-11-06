@@ -14,16 +14,19 @@ public:
             int x=count1s(nums[i]);
             mp[nums[i]]=x;
         }
-        
+        int flag=0;
         for(int i=0;i<nums.size()-1;i++){
+            flag=0;
             for(int j=0;j<nums.size()-1;j++){
                 if(nums[j]>nums[j+1]){
+                    flag=1;
                     if(mp[nums[j]]==mp[nums[j+1]]){
                         swap(nums[j],nums[j+1]);
                     }
                     else return  false;
                 }
             }
+            if(flag==0) return true;
         }
         return true;
     }
