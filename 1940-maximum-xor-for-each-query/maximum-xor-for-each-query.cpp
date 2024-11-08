@@ -1,26 +1,12 @@
 class Solution {
 public:
     vector<int> getMaximumXor(vector<int>& nums, int maximumBit) {
-        vector<int> prefixxor;
-        vector<int> ans;
-        int xorr=nums[0];
-        prefixxor.push_back(nums[0]);
-
-        for(int i=1;i<nums.size();i++){
-            xorr^=nums[i];
-            prefixxor.push_back(xorr);
-        }
-        int n=nums.size()-1, num=pow(2,maximumBit)-1;
-        for(int i=0;i<nums.size();i++){
-            int x=num;
-            while(x){
-                int temp=prefixxor[n-i]^num;
-                if(temp<=num){
-                    ans.push_back(temp);
-                    break;
-                }
-                else num--;
-            }
+        int n = nums.size(),xorr = nums[0],maxxorr = pow(2,maximumBit)-1;
+        for(int i=1;i<n;i++)xorr ^= nums[i];
+        vector<int>ans(n);
+        for(int i=0;i<n;i++){
+            ans[i] = xorr^maxxorr;
+            xorr ^= nums[n-1-i];
         }
         return ans;
     }
