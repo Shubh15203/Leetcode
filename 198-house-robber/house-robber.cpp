@@ -9,17 +9,18 @@ public:
     int rob(vector<int>& nums) {
         int n=nums.size();
         
-        vector<int> dp(n,-1);
-        int take,nottake;
-        dp[0]=nums[0];
+        int take,nottake,prev,prev2,curr;
+        prev=nums[0];
         
         for(int i=1;i<n;i++){
             take= nums[i];
-            if(i>1) take+= dp[i-2];
-            nottake= dp[i-1];
-            dp[i]=max(take,nottake);
+            if(i>1) take+= prev2;
+            nottake= prev;
+            curr=max(take,nottake);
+            prev2=prev;
+            prev=curr;
         }
         // return total(nums,n,0,dp);
-        return dp[n-1];
+        return prev;
     }
 };
